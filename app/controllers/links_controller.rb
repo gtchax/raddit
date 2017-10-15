@@ -14,6 +14,20 @@ class LinksController < ApplicationController
  
   end
 
+  def upvote
+    set_link()
+    @link.upvote_by current_user
+    redirect_to link_path
+
+  end
+
+  def downvote
+    set_link()
+    @link.downvote_by current_user
+    redirect_to link_path
+
+  end
+
   # GET /links/new
   def new
     @link = current_user.links.build
